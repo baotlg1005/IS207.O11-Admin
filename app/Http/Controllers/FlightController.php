@@ -20,6 +20,19 @@ class FlightController extends Controller
         ]);
     }
 
+    public function search(Request $request){
+        $name = $request->get('Name');
+        $from = $request->get('From');
+        $to = $request->get('To');
+        $flights = Flight::where('Name', 'LIKE', '%'.$name.'%')
+            ->where('From', 'LIKE', '%'.$from.'%')
+            ->where('To', 'LIKE', '%'.$to.'%')
+            ->paginate(5);
+        return view('flight.index', [
+            'flights' => $flights,
+        ]);
+    }
+
     /**
      * Show the form for creating a new resource.
      */

@@ -28,5 +28,7 @@ class Flight extends Model
         'SeatClass',
         'NumSeat',
         'Price',
+        'created_at',
+        'updated_at',
     ];
 }
