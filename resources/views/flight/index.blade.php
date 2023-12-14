@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     @foreach ($flights as $flight)
-        {{ $flight->name }}
+        {{ $flight->Name }}
     @endforeach
 </div>
  

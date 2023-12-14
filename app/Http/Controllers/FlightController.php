@@ -13,7 +13,8 @@ class FlightController extends Controller
     public function index()
     {
         // dd($flight = Flight::all());
-        $flights = Flight::all()->partition(3);
+        $flights = Flight::get()
+            ->paginate(5);
         return view('flight.index', [
             'flights' => $flights,
         ]);
