@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\FlightInvoice;
+use App\Models\TaxiInvoice;
+use App\Models\BusInvoice;
+use App\Models\RoomInvoice;
 
 class InvoiceController extends Controller
 {
@@ -11,7 +15,29 @@ class InvoiceController extends Controller
      */
     public function index()
     {
-        //
+        $flight_invoices = FlightInvoice::join('invoice', 'invoice.Id', '=', 'flight_invoice.Invoice_id')
+            ->get()
+            ->paginate(5);
+
+        $bus_invoices = BusInvoice::join('invoice', 'invoice.Id', '=', 'bus_invoice.Invoice_id')
+            ->get()
+            ->paginate(5);
+        $room_invoices = RoomInvoice::join('invoice', 'invoice.Id', '=', 'room_invoice.Invoice_id')
+            ->join('room', 'room.Id', '=', 'room_invoice.Room_id')
+            ->join('hotel', 'hotel.Id', '=', 'room.Hotel_id')
+            ->get()
+            ->paginate(5);
+
+        $taxi_invoices = TaxiInvoice::join('invoice', 'invoice.Id', '=', 'taxi_invoice.Invoice_id')
+            ->get()
+            ->paginate(5);
+
+        return view('invoice.index', [
+            'flight_invoices' => $flight_invoices,
+            'bus_invoices' => $bus_invoices,
+            'room_invoices' => $room_invoices,
+            'taxi_invoices' => $taxi_invoices,
+        ]);
     }
 
     /**

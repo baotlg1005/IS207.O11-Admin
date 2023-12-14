@@ -32,3 +32,4 @@ Route::get('/flight/create', [App\Http\Controllers\FlightController::class, 'cre
 Route::post('/flight', [App\Http\Controllers\FlightController::class, 'store'])->name('flight.store');
 
 //INVOICE
+Route::get('/invoice', [App\Http\Controllers\InvoiceController::class, 'index'])->name('invoice');
