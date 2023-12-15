@@ -39,6 +39,7 @@ class FlightController extends Controller
     public function create()
     {
         //
+        return view('flight.create');
     }
 
     /**
@@ -47,6 +48,21 @@ class FlightController extends Controller
     public function store(Request $request)
     {
         //
+        $flight = new Flight();
+        $flight->From = $request->From;
+        $flight->To = $request->To;
+        $flight->Date = $request->Date;
+        $flight->DepartureTime = $request->DepartureTime;
+        $flight->ArrivalTime = $request->ArrivalTime;
+        $flight->TravelTime = $request->TravelTime;
+        $flight['Stop/Direct'] = $request['Stop/Direct'];
+        $flight->Name = $request->Name;
+        $flight->SeatClass = $request->SeatClass;
+        $flight->NumSeat = $request->NumSeat;
+        $flight->Price = $request->Price;
+        $flight->ID = uniqid('FL');
+        $flight->save();
+        return redirect()->route('flight.index');
     }
 
     /**
@@ -63,6 +79,10 @@ class FlightController extends Controller
     public function edit(string $id)
     {
         //
+        $flight = Flight::find($id);
+        return view('flight.edit', [
+            'flight' => $flight,
+        ]);
     }
 
     /**
@@ -71,6 +91,21 @@ class FlightController extends Controller
     public function update(Request $request, string $id)
     {
         //
+        $flight = Flight::where( 'ai_id', $id )->update([
+            'From' => $request->From,
+            'To' => $request->To,
+            'Date' => $request->Date,
+            'DepartureTime' => $request->DepartureTime,
+            'ArrivalTime' => $request->ArrivalTime,
+            'TravelTime' => $request->TravelTime,
+            'Stop/Direct' => $request['Stop/Direct'],
+            'Name' => $request->Name,
+            'SeatClass' => $request->SeatClass,
+            'NumSeat' => $request->NumSeat,
+            'Price' => $request->Price,
+        ]);
+        // $flight->save();
+        return redirect()->route('flight.index');
     }
 
     /**
@@ -79,5 +114,7 @@ class FlightController extends Controller
     public function destroy(string $id)
     {
         //
+        Flight::where( 'ai_id', $id )->delete();
+        return redirect()->route('flight.index');
     }
 }

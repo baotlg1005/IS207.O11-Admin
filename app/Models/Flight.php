@@ -9,6 +9,7 @@ class Flight extends Model
 {
     use HasFactory;
     protected $table = 'flight';
+    public $timestamps = false;
 
     /**
      * The attributes that are mass assignable.
@@ -16,6 +17,7 @@ class Flight extends Model
      * @var array<int, string>
      */
     protected $fillable = [
+        'ai_id', // 'ai_id' is the primary key of the table 'flight
         'ID',
         'From',
         'To',
