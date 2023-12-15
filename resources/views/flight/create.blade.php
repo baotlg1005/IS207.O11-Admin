@@ -8,10 +8,6 @@
             <h2>Thêm chuyến bay</h2>
             <br />
             <div class="form-group">
-                <label for="txtID">Mã chuyến bay</label>
-                <input type="text" class="form-control" name="ID" id="txtID" placeholder="">
-            </div>
-            <div class="form-group">
                 <label for="txtFrom">Nơi đi</label>
                 <input type="text" class="form-control" name="From" id="txtFrom" placeholder="">
             </div>
@@ -36,8 +32,8 @@
                 <input type="text" class="form-control" name="TravelTime" id="txtTravelTime" placeholder="">
             </div>
             <div class="form-group">
-                <label for="txtStop">Trực tiếp</label>
-                <input type="text" class="form-control" name="Stop" id="txtStop" placeholder="">
+                <label for="txtStop">Trạm dừng</label>
+                <input type="text" class="form-control" name="StopDirect" id="txtStop" placeholder="">
             </div>
             <div class="form-group">
                 <label for="txtName">Tên hãng bay</label>

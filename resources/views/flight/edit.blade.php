@@ -2,15 +2,11 @@
 
 @section('content')
 <div class="container">
-    <form action="{{ route('flight.update') }}" method = "POST">
+    <form action="{{ route('flight.update', $flight->ai_id) }}" method = "POST">
         @csrf
         @method('PUT')
         <h2>Cập nhật chuyến bay</h2>
         <br />
-        <div class="form-group">
-            <label for="txtID">Mã chuyến bay</label>
-            <input type="text" class="form-control" name="ID" id="txtID" placeholder="" value="{{$flight->ID}}">
-        </div>
         <div class="form-group">
             <label for="txtFrom">Nơi đi</label>
             <input type="text" class="form-control" name="From" id="txtFrom" placeholder="" value="{{$flight->From}}">
@@ -36,7 +32,7 @@
             <input type="text" class="form-control" name="TravelTime" id="txtTravelTime" placeholder="" value="{{$flight->TravelTime}}">
         </div>
         <div class="form-group">
-            <label for="txtStop">Trực tiếp</label>
+            <label for="txtStop">Trạm dừng</label>
             <input type="text" class="form-control" name="Stop/Direct" id="txtStop" placeholder="" value="{{$flight["Stop/Direct"]}}">
         </div>
         <div class="form-group">

@@ -39,9 +39,9 @@ class FlightController extends Controller
     public function create()
     {
         //
+
         return view('flight.create');
     }
-
     /**
      * Store a newly created resource in storage.
      */
@@ -55,7 +55,7 @@ class FlightController extends Controller
         $flight->DepartureTime = $request->DepartureTime;
         $flight->ArrivalTime = $request->ArrivalTime;
         $flight->TravelTime = $request->TravelTime;
-        $flight['Stop/Direct'] = $request['Stop/Direct'];
+        $flight['Stop/Direct'] = $request->StopDirect;
         $flight->Name = $request->Name;
         $flight->SeatClass = $request->SeatClass;
         $flight->NumSeat = $request->NumSeat;
@@ -79,7 +79,7 @@ class FlightController extends Controller
     public function edit(string $id)
     {
         //
-        $flight = Flight::find($id);
+        $flight = Flight::where( 'ai_id', $id )->first();
         return view('flight.edit', [
             'flight' => $flight,
         ]);
@@ -104,7 +104,6 @@ class FlightController extends Controller
             'NumSeat' => $request->NumSeat,
             'Price' => $request->Price,
         ]);
-        // $flight->save();
         return redirect()->route('flight.index');
     }
 
