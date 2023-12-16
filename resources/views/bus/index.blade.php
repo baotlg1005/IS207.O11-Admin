@@ -70,8 +70,8 @@
             <td>{{ $bus->updated_at }}</td>
             <td>
                 <div class="d-flex justify-content-between align-items-center gap-2">
-                    <a href="{{ route('bus.edit', $bus->ai_id) }}" class="btn btn-primary">Edit</a>
-                    <form action="{{ route('bus.destroy', $bus->ai_id) }}" method="POST">
+                    <a href="{{ route('bus.edit', $bus->Id) }}" class="btn btn-primary">Edit</a>
+                    <form action="{{ route('bus.destroy', $bus->Id) }}" method="POST">
                         @csrf
                         @method('DELETE')
                         <button class="btn btn-danger" 

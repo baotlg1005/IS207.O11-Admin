@@ -80,7 +80,7 @@ class BusController extends Controller
     public function edit(string $id)
     {
         //
-        $bus = Bus::where( 'ai_id', $id )->first();
+        $bus = Bus::where( 'Id', $id )->first();
         return view('bus.edit', [
             'bus' => $bus,
         ]);
@@ -92,7 +92,7 @@ class BusController extends Controller
     public function update(Request $request, string $id)
     {
         //
-        $bus = Bus::where( 'ai_id', $id )->update([
+        $bus = Bus::where( 'Id', $id )->update([
             'From' => $request->From,
             'To' => $request->To,
             'Date' => $request->Date,
@@ -115,7 +115,7 @@ class BusController extends Controller
     public function destroy(string $id)
     {
         //
-        Bus::where( 'ai_id', $id )->delete();
+        Bus::where( 'Id', $id )->delete();
         return redirect()->route('bus.index');
     }
 }

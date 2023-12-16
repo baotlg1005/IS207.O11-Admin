@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-    <form action="{{ route('bus.update', $bus->ai_id) }}" method="POST" class="row">
+    <form action="{{ route('bus.update', $bus->Id) }}" method="POST" class="row">
         @csrf
         @method('PUT')
         <h2>Cập nhật chuyến xe</h2>
