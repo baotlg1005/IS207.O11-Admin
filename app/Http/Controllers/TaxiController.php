@@ -15,7 +15,7 @@ class TaxiController extends Controller
      */
     public function index()
     {
-        $TaxiAreas = TaxiArea::all();
+        $taxiAreas = TaxiArea::all();
         $taxis = Taxi::join('taxi_type', 'taxi_type.Id', '=', 'taxi.Type_id')
             ->join('taxi_area_detail', 'taxi_area_detail.Taxi_id', '=', 'taxi.Id')
             ->join('taxi_area', 'taxi_area.Id', '=', 'taxi_area_detail.Pickpoint_id')
@@ -23,13 +23,13 @@ class TaxiController extends Controller
             ->paginate(5);
         return view('taxi.index', [
             'taxis' => $taxis,
-            'TaxiAreas' => $TaxiAreas,
+            'TaxiAreas' => $taxiAreas,
         ]);
     }
 
     public function search(Request $request)
     {
-        $TaxiAreas = TaxiArea::all();
+        $taxiAreas = TaxiArea::all();
         $name = $request->get('Name');
         $type = $request->get('Type');
         $pickpoint = $request->get('PickPoint');
@@ -43,7 +43,7 @@ class TaxiController extends Controller
             ->paginate(5);
         return view('taxi.index', [
             'taxis' => $taxis,
-            'TaxiAreas' => $TaxiAreas,
+            'TaxiAreas' => $taxiAreas,
         ]);
     }
 
@@ -52,9 +52,9 @@ class TaxiController extends Controller
      */
     public function create()
     {
-        $TaxiAreas = TaxiArea::all();
+        $taxiAreas = TaxiArea::all();
         return view('taxi.create', [
-            'TaxiAreas' => $TaxiAreas,
+            'TaxiAreas' => $taxiAreas,
         ]);
     }
     /**
@@ -94,7 +94,7 @@ class TaxiController extends Controller
     public function edit(string $id)
     {
         //
-        $TaxiAreas = TaxiArea::all();
+        $taxiAreas = TaxiArea::all();
         $taxi = Taxi::join('taxi_type', 'taxi_type.Id', '=', 'taxi.Type_id')
             ->join('taxi_area_detail', 'taxi_area_detail.Taxi_id', '=', 'taxi.Id')
             ->join('taxi_area', 'taxi_area.Id', '=', 'taxi_area_detail.Pickpoint_id')
@@ -103,7 +103,7 @@ class TaxiController extends Controller
             ->first();
         return view('taxi.edit', [
             'taxi' => $taxi,
-            'TaxiAreas' => $TaxiAreas,
+            'TaxiAreas' => $taxiAreas,
         ]);
     }
 

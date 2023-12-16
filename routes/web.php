@@ -59,5 +59,18 @@ Route::get('/taxi/{id}/edit', [App\Http\Controllers\TaxiController::class, 'edit
 Route::put('/taxi/{id}', [App\Http\Controllers\TaxiController::class, 'update'])->name('taxi.update');
 
 Route::delete('/taxi/{id}', [App\Http\Controllers\TaxiController::class, 'destroy'])->name('taxi.destroy');
+
+//TAXI AREA
+Route::get('/taxiarea/create', [App\Http\Controllers\TaxiAreaController::class, 'create'])->name('taxiarea.create');
+Route::post('/taxiarea', [App\Http\Controllers\TaxiAreaController::class, 'store'])->name('taxiarea.store');
+
+Route::get('/taxiarea', [App\Http\Controllers\TaxiAreaController::class, 'index'])->name('taxiarea.index');
+Route::get('/taxiarea/search', [App\Http\Controllers\TaxiAreaController::class, 'search'])->name('taxiarea.search');
+Route::get('/taxiarea/{id}', [App\Http\Controllers\TaxiAreaController::class, 'show'])->name('taxiarea.show');
+
+Route::get('/taxiarea/{id}/edit', [App\Http\Controllers\TaxiAreaController::class, 'edit'])->name('taxiarea.edit');
+Route::put('/taxiarea/{id}', [App\Http\Controllers\TaxiAreaController::class, 'update'])->name('taxiarea.update');
+
+Route::delete('/taxiarea/{id}', [App\Http\Controllers\TaxiAreaController::class, 'destroy'])->name('taxiarea.destroy');
 //INVOICE
 Route::get('/invoice', [App\Http\Controllers\InvoiceController::class, 'index'])->name('invoice');
