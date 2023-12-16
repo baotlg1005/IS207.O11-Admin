@@ -66,6 +66,7 @@
             </div>
             <div class="input-group-btn mt-auto">
                 <button id="update-btn" class="btn btn-success w-25 fw-bold" type="submit">Cập Nhật</button>
+                <button class="btn btn-danger fw-bold w-25 ms-2" type="reset">Hoàn tác</button>
             </div>
         </div>
 
