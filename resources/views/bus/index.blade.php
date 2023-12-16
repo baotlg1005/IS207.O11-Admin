@@ -24,6 +24,9 @@
                         <div class="col-1">
                             <button class="btn btn-primary">Search</button>
                         </div>
+                        <div class="col-1">
+                            <button class="btn btn-danger" type="reset">Clear</button>
+                        </div>
                     </div>
                 </form>
         </div>
