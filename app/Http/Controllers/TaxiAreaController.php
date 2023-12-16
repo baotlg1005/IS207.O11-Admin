@@ -14,7 +14,7 @@ class TaxiAreaController extends Controller
     {
         $taxiAreas = TaxiArea::get()
             ->paginate(5);
-        return view('taxiArea.index', [
+        return view('taxiarea.index', [
             'taxiAreas' => $taxiAreas,
         ]);
     }
@@ -24,7 +24,7 @@ class TaxiAreaController extends Controller
         $pickPoint = $request->get('PickPoint');
         $taxiAreas = TaxiArea::where('PickPoint', 'LIKE', '%'.$pickPoint.'%')
             ->paginate(5);
-        return view('taxiArea.index', [
+        return view('taxiarea.index', [
             'taxiAreas' => $taxiAreas,
         ]);
     }
@@ -34,7 +34,7 @@ class TaxiAreaController extends Controller
      */
     public function create()
     {
-        return view('taxiArea.create');
+        return view('taxiarea.create');
     }
     /**
      * Store a newly created resource in storage.
@@ -45,7 +45,7 @@ class TaxiAreaController extends Controller
         $taxiArea = new TaxiArea();
         $taxiArea->PickPoint = $request->PickPoint;
         $taxiArea->save();
-        return redirect()->route('taxiArea.index');
+        return redirect()->route('taxiarea.index');
     }
 
     /**
@@ -63,7 +63,7 @@ class TaxiAreaController extends Controller
     {
         //
         $taxiArea = TaxiArea::where('Id', $id)->first();
-        return view('taxi.edit', [
+        return view('taxiarea.edit', [
             'taxiArea' => $taxiArea
         ]);
     }
@@ -73,11 +73,10 @@ class TaxiAreaController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
-        $taxiArea = TaxiArea::where('Id', $id)->first();
-        $taxiArea->PickPoint = $request->PickPoint;
-        $taxiArea->save();
-        return redirect()->route('taxiArea.index');
+        $taxiArea = TaxiArea::where('Id', $id)->update([
+            'PickPoint' => $request->PickPoint,
+        ]);
+        return redirect()->route('taxiarea.index');
     }
 
     /**
@@ -85,9 +84,19 @@ class TaxiAreaController extends Controller
      */
     public function destroy(string $id)
     {
-        //
-        $taxiArea = TaxiArea::where('Id', $id)->first();
-        $taxiArea->delete();
-        return redirect()->route('taxiArea.index');
+        // if (TaxiArea::where('Id', $id)->delete()) {
+        //     alert("Không thể xóa khu vực hoạt động này vì có taxi đang hoạt động ở khu vực này");
+        //     return redirect()->route('taxiarea.index');
+        // }
+        // else {
+        //     return redirect()->route('taxiarea.index');
+        // }
+        try {
+            TaxiArea::where('Id', $id)->delete();
+            return redirect()->route('taxiarea.index');
+        } catch (\Throwable $th) {
+            return redirect()->route('taxiarea.index');
+        }
+
     }
 }

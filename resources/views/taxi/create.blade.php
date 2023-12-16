@@ -49,7 +49,7 @@
                 </select>
             </div>
             <div class="input-group-btn mt-auto">
-                <button class="btn btn-success fw-bold w-25" type="submit">Thêm chuyến bay</button>
+                <button class="btn btn-success fw-bold w-25" type="submit">Thêm taxi</button>
                 <button class="btn btn-danger fw-bold w-25 ms-2" type="reset">Hoàn tác</button>
             </div>
         </div>
