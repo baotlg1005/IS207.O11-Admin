@@ -2,74 +2,62 @@
 
 @section('content')
 <div class="container">
-    <form action="{{ route('flight.update', $flight->ai_id) }}" method="POST" class="row">
+    <form action="{{ route('taxi.update', $taxi->Id) }}" method="POST" class="row">
         @csrf
         @method('PUT')
-        <h2>Cập nhật chuyến bay</h2>
+        <h2>Cập nhật taxi</h2>
         <br />
         <div class="col">
             <div class="form-group mb-2">
-                <label for="txtFrom">Nơi đi</label>
-                <input type="text" class="form-control" name="From" id="txtFrom" placeholder=""
-                    value="{{$flight->From}}">
+                <label for="txtName">Tên taxi</label>
+                <input type="text" class="form-control" name="Name" id="txtName" placeholder=""
+                    value="{{ $taxi->Name }}">
             </div>
             <div class="form-group mb-2">
-                <label for="txtTo">Nơi đến</label>
-                <input type="text" class="form-control" name="To" id="txtTo" placeholder="" value="{{$flight->To}}">
+                <label for="txtLuggage">Số lượng hành lý</label>
+                <input type="text" class="form-control" name="Luggage" id="txtLuggage" placeholder=""
+                    value="{{ $taxi->Luggage }}">
             </div>
             <div class="form-group mb-2">
-                <label for="txtDate">Ngày bay</label>
-                <input type="date" class="form-control" name="Date" id="txtDate" placeholder=""
-                    value="{{$flight->Date}}">
-            </div>
-            <div class="form-group mb-2">
-                <label for="txtDepartureTime">Giờ khởi hành</label>
-                <input type="time" class="form-control" name="DepartureTime" id="txtDepartureTime" placeholder=""
-                    value="{{$flight->DepartureTime}}">
-            </div>
-            <div class="form-group mb-2">
-                <label for="txtArrivalTime">Giờ đến</label>
-                <input type="time" class="form-control" name="ArrivalTime" id="txtArrivalTime" placeholder=""
-                    value="{{$flight->ArrivalTime}}">
+                <label for="txtNumofSeat">Số lượng ghế</label>
+                <input type="text" class="form-control" name="NumofSeat" id="txtNumofSeat" placeholder=""
+                    value="{{ $taxi->NumofSeat }}">
             </div>
             <div class="form-group">
                 <label for="txtPrice">Giá vé</label>
                 <input type="text" class="form-control" name="Price" id="txtPrice" placeholder=""
-                    value="{{$flight->Price}}">
+                    value="{{ $taxi->Price }}">
             </div>
         </div>
         <div class="col d-flex flex-column">
             <div class="form-group mb-2">
-                <label for="txtTravelTime">Thời gian bay</label>
-                <input type="text" class="form-control" name="TravelTime" id="txtTravelTime" placeholder=""
-                    value="{{$flight->TravelTime}}">
+                <label for="txtState">Trạng thái</label>
+                <select name="State" class="form-select" id="txtState">
+                    <option value="Free" {{ $taxi->State == 'Free' ? 'selected' : '' }}>Free</option>
+                    <option value="Rented" {{ $taxi->State == 'Rented' ? 'selected' : '' }}>Rented</option>
+                </select>
             </div>
             <div class="form-group mb-2">
-                <label for="txtStop">Trạm dừng</label>
-                <input type="text" class="form-control" name="Stop/Direct" id="txtStop" placeholder=""
-                    value="{{$flight['Stop/Direct']}}">
+                <label for="txtType">Loại taxi</label>
+                <select name="Type" class="form-select" id="txtType">
+                    <option value="0" {{ $taxi->Type_id == 0 ? 'selected' : '' }}>Có tài xế</option>
+                    <option value="1" {{ $taxi->Type_id == 1 ? 'selected' : '' }}>Tự lái</option>
+                </select>
             </div>
             <div class="form-group mb-2">
-                <label for="txtName">Tên hãng bay</label>
-                <input type="text" class="form-control" name="Name" id="txtName" placeholder=""
-                    value="{{$flight->Name}}">
-            </div>
-            <div class="form-group mb-2">
-                <label for="txtSeatClass">Hạng ghế</label>
-                <input type="text" class="form-control" name="SeatClass" id="txtSeatClass" placeholder=""
-                    value="{{$flight->SeatClass}}">
-            </div>
-            <div class="form-group mb-2">
-                <label for="txtNumSeat">Số ghế</label>
-                <input type="text" class="form-control" name="NumSeat" id="txtNumSeat" placeholder=""
-                    value="{{$flight->NumSeat}}">
+                <label for="txtPickPoint">Khu vực</label>
+                <select name="PickPoint" class="form-select" id="txtPickPoint">
+                    @foreach ($TaxiAreas as $TaxiArea)
+                    <option value="{{ $TaxiArea->Id }}" {{ $taxi->PickPoint == $TaxiArea->Id ? 'selected' : '' }}>
+                        {{ $TaxiArea->PickPoint }}</option>
+                    @endforeach
+                </select>
             </div>
             <div class="input-group-btn mt-auto">
                 <button id="update-btn" class="btn btn-success w-25 fw-bold" type="submit">Cập Nhật</button>
                 <button class="btn btn-danger fw-bold w-25 ms-2" type="reset">Hoàn tác</button>
             </div>
         </div>
-
         <br />
     </form>
 </div>

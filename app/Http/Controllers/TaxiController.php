@@ -15,6 +15,7 @@ class TaxiController extends Controller
      */
     public function index()
     {
+        $TaxiAreas = TaxiArea::all();
         $taxis = Taxi::join('taxi_type', 'taxi_type.Id', '=', 'taxi.Type_id')
             ->join('taxi_area_detail', 'taxi_area_detail.Taxi_id', '=', 'taxi.Id')
             ->join('taxi_area', 'taxi_area.Id', '=', 'taxi_area_detail.Pickpoint_id')
@@ -22,11 +23,13 @@ class TaxiController extends Controller
             ->paginate(5);
         return view('taxi.index', [
             'taxis' => $taxis,
+            'TaxiAreas' => $TaxiAreas,
         ]);
     }
 
     public function search(Request $request)
     {
+        $TaxiAreas = TaxiArea::all();
         $name = $request->get('Name');
         $type = $request->get('Type');
         $pickpoint = $request->get('PickPoint');
@@ -36,10 +39,11 @@ class TaxiController extends Controller
             ->select('taxi.*', 'taxi_type.Type as Type', 'taxi_area.PickPoint as PickPoint')
             ->where('taxi.Name', 'like', "%$name%")
             ->where('taxi_type.Id', 'like', "%$type%")
-            ->where('taxi_area.PickPoint', 'like', "%$pickpoint%")
+            ->where('taxi_area.Id', 'like', "%$pickpoint%")
             ->paginate(5);
         return view('taxi.index', [
             'taxis' => $taxis,
+            'TaxiAreas' => $TaxiAreas,
         ]);
     }
 
@@ -90,9 +94,16 @@ class TaxiController extends Controller
     public function edit(string $id)
     {
         //
-        $bus = Bus::where('ai_id', $id)->first();
-        return view('bus.edit', [
-            'bus' => $bus,
+        $TaxiAreas = TaxiArea::all();
+        $taxi = Taxi::join('taxi_type', 'taxi_type.Id', '=', 'taxi.Type_id')
+            ->join('taxi_area_detail', 'taxi_area_detail.Taxi_id', '=', 'taxi.Id')
+            ->join('taxi_area', 'taxi_area.Id', '=', 'taxi_area_detail.Pickpoint_id')
+            ->select('taxi.*', 'taxi_type.Type as Type', 'taxi_area.Id as PickPoint')
+            ->where('taxi.Id', '=', $id)
+            ->first();
+        return view('taxi.edit', [
+            'taxi' => $taxi,
+            'TaxiAreas' => $TaxiAreas,
         ]);
     }
 
@@ -101,22 +112,21 @@ class TaxiController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
-        $bus = Bus::where('ai_id', $id)->update([
-            'From' => $request->From,
-            'To' => $request->To,
-            'Date' => $request->Date,
-            'DepartureTime' => $request->DepartureTime,
-            'ArrivalTime' => $request->ArrivalTime,
-            'TravelTime' => $request->TravelTime,
-            'PickPoint' => $request->PickPoint,
-            'DesPoint' => $request->DesPoint,
+
+        $taxi = Taxi::where('Id', $id)->update([
             'Name' => $request->Name,
-            'SeatCount' => $request->SeatCount,
-            'NumSeat' => $request->NumSeat,
+            'Luggage' => $request->Luggage,
+            'NumofSeat' => $request->NumofSeat,
             'Price' => $request->Price,
+            'State' => $request->State,
+            'Type_id' => $request->Type,
         ]);
-        return redirect()->route('bus.index');
+        
+        $taxiAreaDetail = TaxiAreaDetail::where('Taxi_id', $id)->update([
+            'Pickpoint_id' => $request->PickPoint,
+        ]);
+        
+        return redirect()->route('taxi.index');
     }
 
     /**
@@ -125,8 +135,8 @@ class TaxiController extends Controller
     public function destroy(string $id)
     {
         //
-        Taxi::where('Id', $id)->delete();
         TaxiAreaDetail::where('Taxi_id', $id)->delete();
+        Taxi::where('Id', $id)->delete();
         return redirect()->route('taxi.index');
     }
 }
