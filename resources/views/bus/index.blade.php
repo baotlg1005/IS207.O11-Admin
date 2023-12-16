@@ -4,10 +4,10 @@
 <div class="container">
     <div class="row justify-content-between">
         <div class="col-2 mb-3">
-            <a href="{{ route('flight.create') }}" class="btn btn-primary">Add Flight</a>
+            <a href="{{ route('bus.create') }}" class="btn btn-primary">Add Bus</a>
         </div>
         <div class="col-10 mb-3">
-                <form action="{{ route('flight.search') }}" method="GET">
+                <form action="{{ route('bus.search') }}" method="GET">
                     <div class="row justify-content-end">
                         <div class="col-2 d-flex align-items-center gap-2">
                             <div>Name: </div>
@@ -31,10 +31,10 @@
 
     <table class="table table-striped">
         <caption>
-            @if ($flights->total() > 0)
-                {{ $flights->total() }} flight(s) found.
+            @if ($buses->total() > 0)
+                {{ $buses->total() }} bus(es) found.
             @else
-                No flight found
+                No Bus found
             @endif
         </caption>
         <tr>
@@ -44,32 +44,34 @@
             <th>To</th>
             <th>DepartureTime</th>
             <th>ArrivalTime</th>
-            <th>Stop/Direct</th>
-            <th>SeatClass</th>
+            <th>PickPoint</th>
+            <th>DesPoint</th>
+            <th>SeatCount</th>
             <th>NumSeat</th>
             <th>Price</th>
             <th>Created at</th>
             <th>Updated at</th>
             <th>Action</th>
         </tr>
-        @foreach ($flights as $flight)
+        @foreach ($buses as $bus)
         <tr>
-            <td>{{ $flight->ID }}</td>
-            <td>{{ $flight->Name }}</td>
-            <td>{{ $flight->From }}</td>
-            <td>{{ $flight->To }}</td>
-            <td>{{ $flight->DepartureTime }}</td>
-            <td>{{ $flight->ArrivalTime }}</td>
-            <td>{{ $flight['Stop/Direct'] }}</td>
-            <td>{{ $flight->SeatClass }}</td>
-            <td>{{ $flight->NumSeat }}</td>
-            <td>{{ $flight->Price }}</td>
-            <td>{{ $flight->created_at }}</td>
-            <td>{{ $flight->updated_at }}</td>
+            <td>{{ $bus->Id }}</td>
+            <td>{{ $bus->Name }}</td>
+            <td>{{ $bus->From }}</td>
+            <td>{{ $bus->To }}</td>
+            <td>{{ $bus->DepartureTime }}</td>
+            <td>{{ $bus->ArrivalTime }}</td>
+            <td>{{ $bus->PickPoint }}</td>
+            <td>{{ $bus->DesPoint }}</td>
+            <td>{{ $bus->SeatCount }}</td>
+            <td>{{ $bus->NumSeat }}</td>
+            <td>{{ $bus->Price }}</td>
+            <td>{{ $bus->created_at }}</td>
+            <td>{{ $bus->updated_at }}</td>
             <td>
                 <div class="d-flex justify-content-between align-items-center gap-2">
-                    <a href="{{ route('flight.edit', $flight->ai_id) }}" class="btn btn-primary">Edit</a>
-                    <form action="{{ route('flight.destroy', $flight->ai_id) }}" method="POST">
+                    <a href="{{ route('bus.edit', $bus->ai_id) }}" class="btn btn-primary">Edit</a>
+                    <form action="{{ route('bus.destroy', $bus->ai_id) }}" method="POST">
                         @csrf
                         @method('DELETE')
                         <button class="btn btn-danger" 
@@ -81,7 +83,7 @@
         @endforeach
     </table>
     <div class="d-flex justify-content-center">
-    {!! $flights->appends(request()->input())->links() !!}
+    {!! $buses->appends(request()->input())->links() !!}
     </div>
 </div>
 </div>

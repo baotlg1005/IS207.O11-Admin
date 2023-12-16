@@ -34,5 +34,17 @@ Route::put('/flight/{id}', [App\Http\Controllers\FlightController::class, 'updat
 
 Route::delete('/flight/{id}', [App\Http\Controllers\FlightController::class, 'destroy'])->name('flight.destroy');
 
+//BUS
+Route::get('/bus/create', [App\Http\Controllers\BusController::class, 'create'])->name('bus.create');
+Route::post('/bus', [App\Http\Controllers\BusController::class, 'store'])->name('bus.store');
+
+Route::get('/bus', [App\Http\Controllers\BusController::class, 'index'])->name('bus.index');
+Route::get('/bus/search', [App\Http\Controllers\BusController::class, 'search'])->name('bus.search');
+Route::get('/bus/{id}', [App\Http\Controllers\BusController::class, 'show'])->name('bus.show');
+
+Route::get('/bus/{id}/edit', [App\Http\Controllers\BusController::class, 'edit'])->name('bus.edit');
+Route::put('/bus/{id}', [App\Http\Controllers\BusController::class, 'update'])->name('bus.update');
+
+Route::delete('/bus/{id}', [App\Http\Controllers\BusController::class, 'destroy'])->name('bus.destroy');
 //INVOICE
 Route::get('/invoice', [App\Http\Controllers\InvoiceController::class, 'index'])->name('invoice');
