@@ -5,10 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Taxi extends Model
+class TaxiAreaDetail extends Model
 {
     use HasFactory;
-    protected $table = 'taxi';
+    protected $table = 'taxi_area_detail';
     public $timestamps = false;
 
     /**
@@ -19,12 +19,9 @@ class Taxi extends Model
 
     protected $fillable = [
         'ai_id',
-        'Id',
-        'Type_id',
-        'Name',
-        'Luggage',
-        'NumofSeat',
-        'Price',
-        'State'
+        'Pickpoint_id',
+        'Taxi_id',
+        'created_at',
+        'updated_at'
     ];
 }

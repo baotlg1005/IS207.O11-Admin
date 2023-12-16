@@ -46,5 +46,18 @@ Route::get('/bus/{id}/edit', [App\Http\Controllers\BusController::class, 'edit']
 Route::put('/bus/{id}', [App\Http\Controllers\BusController::class, 'update'])->name('bus.update');
 
 Route::delete('/bus/{id}', [App\Http\Controllers\BusController::class, 'destroy'])->name('bus.destroy');
+
+//TAXI
+Route::get('/taxi/create', [App\Http\Controllers\TaxiController::class, 'create'])->name('taxi.create');
+Route::post('/taxi', [App\Http\Controllers\TaxiController::class, 'store'])->name('taxi.store');
+
+Route::get('/taxi', [App\Http\Controllers\TaxiController::class, 'index'])->name('taxi.index');
+Route::get('/taxi/search', [App\Http\Controllers\TaxiController::class, 'search'])->name('taxi.search');
+Route::get('/taxi/{id}', [App\Http\Controllers\TaxiController::class, 'show'])->name('taxi.show');
+
+Route::get('/taxi/{id}/edit', [App\Http\Controllers\TaxiController::class, 'edit'])->name('taxi.edit');
+Route::put('/taxi/{id}', [App\Http\Controllers\TaxiController::class, 'update'])->name('taxi.update');
+
+Route::delete('/taxi/{id}', [App\Http\Controllers\TaxiController::class, 'destroy'])->name('taxi.destroy');
 //INVOICE
 Route::get('/invoice', [App\Http\Controllers\InvoiceController::class, 'index'])->name('invoice');
