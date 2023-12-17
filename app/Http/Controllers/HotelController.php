@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Hotel;
 
 class HotelController extends Controller
 {
@@ -12,6 +13,22 @@ class HotelController extends Controller
     public function index()
     {
         //
+        $hotels = Hotel::get()
+            ->paginate(5);
+        return view('hotel.index', [
+            'hotels' => $hotels,
+        ]);
+    }
+
+    public function search(Request $request){
+        $name = $request->get('Name');
+        $area = $request->get('Area');
+        $hotels = Hotel::where('Name', 'LIKE', '%'.$name.'%')
+            ->where('Area', 'LIKE', '%'.$area.'%')
+            ->paginate(5);
+        return view('hotel.index', [
+            'hotels' => $hotels,
+        ]);
     }
 
     /**
@@ -20,6 +37,7 @@ class HotelController extends Controller
     public function create()
     {
         //
+        return view('hotel.create');
     }
 
     /**
