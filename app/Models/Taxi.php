@@ -18,7 +18,6 @@ class Taxi extends Model
      */
 
     protected $fillable = [
-        'ai_id',
         'Id',
         'Type_id',
         'Name',

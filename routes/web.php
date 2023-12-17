@@ -72,5 +72,18 @@ Route::get('/taxiarea/{id}/edit', [App\Http\Controllers\TaxiAreaController::clas
 Route::put('/taxiarea/{id}', [App\Http\Controllers\TaxiAreaController::class, 'update'])->name('taxiarea.update');
 
 Route::delete('/taxiarea/{id}', [App\Http\Controllers\TaxiAreaController::class, 'destroy'])->name('taxiarea.destroy');
+
+//HOTEL
+Route::get('/hotel/create', [App\Http\Controllers\HotelController::class, 'create'])->name('hotel.create');
+Route::post('/hotel', [App\Http\Controllers\HotelController::class, 'store'])->name('hotel.store');
+
+Route::get('/hotel', [App\Http\Controllers\HotelController::class, 'index'])->name('hotel.index');
+Route::get('/hotel/search', [App\Http\Controllers\HotelController::class, 'search'])->name('hotel.search');
+Route::get('/hotel/{id}', [App\Http\Controllers\HotelController::class, 'show'])->name('hotel.show');
+
+Route::get('/hotel/{id}/edit', [App\Http\Controllers\HotelController::class, 'edit'])->name('hotel.edit');
+Route::put('/hotel/{id}', [App\Http\Controllers\HotelController::class, 'update'])->name('hotel.update');
+
+Route::delete('/hotel/{id}', [App\Http\Controllers\HotelController::class, 'destroy'])->name('hotel.destroy');
 //INVOICE
 Route::get('/invoice', [App\Http\Controllers\InvoiceController::class, 'index'])->name('invoice');
