@@ -18,6 +18,7 @@ class Passport extends Model
     protected $fillable = [
         'Id',
         'Nation',
+        'Number',
         'Expiration',
     ];
 }
