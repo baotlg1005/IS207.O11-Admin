@@ -18,7 +18,6 @@ class Bus extends Model
      */
 
     protected $fillable = [
-        'ai_id', // 'ai_id' is the primary key of the table 'bus
         'Id',
         'From',
         'To',
