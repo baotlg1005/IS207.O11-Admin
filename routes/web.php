@@ -85,5 +85,19 @@ Route::get('/hotel/{id}/edit', [App\Http\Controllers\HotelController::class, 'ed
 Route::put('/hotel/{id}', [App\Http\Controllers\HotelController::class, 'update'])->name('hotel.update');
 
 Route::delete('/hotel/{id}', [App\Http\Controllers\HotelController::class, 'destroy'])->name('hotel.destroy');
+
+//ROOM
+Route::get('/room/create', [App\Http\Controllers\RoomController::class, 'create'])->name('room.create');
+Route::post('/room', [App\Http\Controllers\RoomController::class, 'store'])->name('room.store');
+
+Route::get('/room', [App\Http\Controllers\RoomController::class, 'index'])->name('room.index');
+Route::get('/room/search', [App\Http\Controllers\RoomController::class, 'search'])->name('room.search');
+Route::get('/room/{id}/searchHotel', [App\Http\Controllers\RoomController::class, 'searchHotel'])->name('room.searchHotel');
+Route::get('/room/{id}', [App\Http\Controllers\RoomController::class, 'show'])->name('room.show');
+
+Route::get('/room/{id}/edit', [App\Http\Controllers\RoomController::class, 'edit'])->name('room.edit');
+Route::put('/room/{id}', [App\Http\Controllers\RoomController::class, 'update'])->name('room.update');
+
+Route::delete('/room/{id}', [App\Http\Controllers\RoomController::class, 'destroy'])->name('room.destroy');
 //INVOICE
 Route::get('/invoice', [App\Http\Controllers\InvoiceController::class, 'index'])->name('invoice');

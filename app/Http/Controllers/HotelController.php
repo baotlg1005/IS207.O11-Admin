@@ -94,6 +94,7 @@ class HotelController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        Hotel::where('Id', $id)->delete();
+        return redirect()->route('hotel.index');
     }
 }
