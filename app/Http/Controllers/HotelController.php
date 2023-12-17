@@ -46,6 +46,13 @@ class HotelController extends Controller
     public function store(Request $request)
     {
         //
+        $hotel = new Hotel();
+        $hotel->Name = $request->Name;
+        $hotel->Address = $request->Address;
+        $hotel->Area = $request->Area;
+        $hotel->Id = uniqid("HT");
+        $hotel->save();
+        return redirect()->route('hotel.index');
     }
 
     /**
@@ -62,6 +69,10 @@ class HotelController extends Controller
     public function edit(string $id)
     {
         //
+        $hotel = Hotel::where('Id', $id)->first();
+        return view('hotel.edit', [
+            'hotel' => $hotel,
+        ]);
     }
 
     /**
@@ -70,6 +81,12 @@ class HotelController extends Controller
     public function update(Request $request, string $id)
     {
         //
+        $hotel = Hotel::where('Id', $id)->update([
+            'Name' => $request->Name,
+            'Address' => $request->Address,
+            'Area' => $request->Area,
+        ]);
+        return redirect()->route('hotel.index');
     }
 
     /**

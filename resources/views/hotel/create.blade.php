@@ -18,7 +18,7 @@
             </div>
         </div>
         <div class="col d-flex flex-column">
-        <div class="form-group">
+            <div class="form-group">
                 <label for="txtArea" class="form-label">Khu vực</label>
                 <input type="text" class="form-control" id="txtArea" name="Area" placeholder="Khu vực" required>
             </div>

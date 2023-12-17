@@ -40,15 +40,28 @@
             <th>Area</th>
             <th>created_at</th>
             <th>updated_at</th>
+            <th>Action</th>
         </tr>
         @foreach ($hotels as $hotel)
         <tr>
-            <td>{{ $hotel->ID }}</td>
+            <td>{{ $hotel->Id }}</td>
             <td>{{ $hotel->Name }}</td>
             <td>{{ $hotel->Address }}</td>
             <td>{{ $hotel->Area }}</td>
             <td>{{ $hotel->created_at }}</td>
             <td>{{ $hotel->updated_at }}</td>
+            <td>
+                <div class="d-flex justify-content-between align-items-center gap-2">
+                    <a href="{{ route('hotel.edit', $hotel->Id) }}" class="btn btn-primary">Edit</a>
+                    <form action="{{ route('hotel.destroy', $hotel->Id) }}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button class="btn btn-danger" 
+                        onclick="return confirm('Are you sure you want to delete this item?')" 
+                        type="submit">Delete</button>
+                    </form>
+                </div>
+            </td>
         @endforeach
     </table>
     <div class="d-flex justify-content-center">
