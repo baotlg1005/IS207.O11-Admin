@@ -56,6 +56,8 @@
             <th>State</th>
             <th>Type</th>
             <th>PickPoint</th>
+            <th>created_at</th>
+            <th>updated_at</th>
             <th>Action</th>
         </tr>
         @foreach ($taxis as $taxi)
@@ -68,6 +70,8 @@
             <td>{{ $taxi->State }}</td>
             <td>{{ $taxi->Type }}</td>
             <td>{{ $taxi->PickPoint }}</td>
+            <td>{{ $taxi->created_at }}</td>
+            <td>{{ $taxi->updated_at }}</td>
             <td>
                 <div class="d-flex justify-content-between align-items-center gap-2">
                     <a href="{{ route('taxi.edit', $taxi->Id) }}" class="btn btn-primary">Edit</a>

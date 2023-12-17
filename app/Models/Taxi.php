@@ -24,6 +24,8 @@ class Taxi extends Model
         'Luggage',
         'NumofSeat',
         'Price',
-        'State'
+        'State',
+        'created_at',
+        'updated_at',
     ];
 }
