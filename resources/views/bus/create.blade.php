@@ -10,27 +10,27 @@
         <div class="col">
             <div class="form-group mb-2">
                 <label for="txtFrom">Điểm đi</label>
-                <input type="text" class="form-control" name="From" id="txtFrom" placeholder="">
+                <input type="text" class="form-control" name="From" id="txtFrom" placeholder="" required>
             </div>
             <div class="form-group mb-2">
                 <label for="txtTo">Điểm đến</label>
-                <input type="text" class="form-control" name="To" id="txtTo" placeholder="">
+                <input type="text" class="form-control" name="To" id="txtTo" placeholder="" required>
             </div>
             <div class="form-group mb-2">
                 <label for="txtDate">Ngày đi</label>
-                <input type="date" class="form-control" name="Date" id="txtDate" placeholder="">
+                <input type="date" class="form-control" name="Date" id="txtDate" placeholder="" required>
             </div>
             <div class="form-group mb-2">
                 <label for="txtDepartureTime">Giờ khởi hành</label>
-                <input type="time" class="form-control" name="DepartureTime" id="txtDepartureTime" placeholder="">
+                <input type="time" class="form-control" name="DepartureTime" id="txtDepartureTime" placeholder="" required>
             </div>
             <div class="form-group mb-2">
                 <label for="txtArrivalTime">Giờ đến</label>
-                <input type="time" class="form-control" name="ArrivalTime" id="txtArrivalTime" placeholder="">
+                <input type="time" class="form-control" name="ArrivalTime" id="txtArrivalTime" placeholder="" required>
             </div>
             <div class="form-group mb-4">
                 <label for="txtPrice">Giá vé</label>
-                <input type="text" class="form-control" name="Price" id="txtPrice" placeholder="">
+                <input type="text" class="form-control" name="Price" id="txtPrice" placeholder="" required>
             </div>
             <div class="input-group-btn mt-auto">
                 <button class="btn btn-success fw-bold w-25" type="submit">Thêm chuyến xe</button>
@@ -40,27 +40,27 @@
         <div class="col d-flex flex-column">
             <div class="form-group mb-2">
                 <label for="txtTravelTime">Thời gian đi</label>
-                <input type="text" class="form-control" name="TravelTime" id="txtTravelTime" placeholder="">
+                <input type="text" class="form-control" name="TravelTime" id="txtTravelTime" placeholder="" required> 
             </div>
             <div class="form-group mb-2">
                 <label for="txtPickPoint">Điểm lên xe</label>
-                <input type="text" class="form-control" name="PickPoint" id="txtPickPoint" placeholder="">
+                <input type="text" class="form-control" name="PickPoint" id="txtPickPoint" placeholder="" required>
             </div>
             <div class="form-group mb-2">
                 <label for="txtDesPoint">Điểm xuống xe</label>
-                <input type="text" class="form-control" name="DesPoint" id="txtDesPoint" placeholder="">
+                <input type="text" class="form-control" name="DesPoint" id="txtDesPoint" placeholder="" required>
             </div>
             <div class="form-group mb-2">
                 <label for="txtName">Tên hãng xe</label>
-                <input type="text" class="form-control" name="Name" id="txtName" placeholder="">
+                <input type="text" class="form-control" name="Name" id="txtName" placeholder="" required>
             </div>
             <div class="form-group mb-2">
                 <label for="txtSeatCount">Loại xe</label>
-                <input type="text" class="form-control" name="SeatCount" id="txtSeatCount" placeholder="">
+                <input type="text" class="form-control" name="SeatCount" id="txtSeatCount" placeholder="" required>
             </div>
             <div class="form-group mb-2">
                 <label for="txtNumSeat">Số ghế</label>
-                <input type="text" class="form-control" name="NumSeat" id="txtNumSeat" placeholder="">
+                <input type="text" class="form-control" name="NumSeat" id="txtNumSeat" placeholder="" required>
             </div>
         </div>
         <br />

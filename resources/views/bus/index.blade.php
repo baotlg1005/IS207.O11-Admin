@@ -9,15 +9,15 @@
         <div class="col-10 mb-3">
                 <form action="{{ route('bus.search') }}" method="GET">
                     <div class="row justify-content-end">
-                        <div class="col-2 d-flex align-items-center gap-2">
+                        <div class="col-3 d-flex align-items-center gap-2">
                             <div>Name: </div>
                             <input type="text" name="Name" class="form-control" placeholder="Name" value="{{ request()->get('Name') }}">
                         </div>
-                        <div class="col-2 d-flex align-items-center gap-2">
+                        <div class="col-3 d-flex align-items-center gap-2">
                             <div>From: </div>
                             <input type="text" name="From" class="form-control" placeholder="From" value="{{ request()->get('From') }}">
                         </div>
-                        <div class="col-2 d-flex align-items-center gap-2">
+                        <div class="col-3 d-flex align-items-center gap-2">
                             <div>To: </div>
                             <input type="text" name="To" class="form-control" placeholder="To" value="{{ request()->get('To') }}">
                         </div>
