@@ -11,7 +11,7 @@
             <div class="form-group">
                 <label for="txtPickPoint">Khu vực hoạt động</label>
                 <input type="text" class="form-control" id="txtPickPoint" name="PickPoint"
-                    value="{{ $taxiArea->PickPoint }}">
+                    value="{{ $taxiArea->PickPoint }}" required>
             </div>
         </div>
         <div class="col d-flex flex-column">

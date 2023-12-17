@@ -10,7 +10,7 @@
         <div class="col">
             <div class="form-group">
                 <label for="txtPickPoint">Khu vực hoạt động</label>
-                <input type="text" class="form-control" name="PickPoint" id="txtPickPoint" placeholder="">
+                <input type="text" class="form-control" name="PickPoint" id="txtPickPoint" placeholder="" required>
             </div>
         </div>
         <div class="col d-flex flex-column">

@@ -10,19 +10,19 @@
         <div class="col">
             <div class="form-group mb-2">
                 <label for="txtName">Tên taxi</label>
-                <input type="text" class="form-control" name="Name" id="txtName" placeholder="">
+                <input type="text" class="form-control" name="Name" id="txtName" placeholder="" required>
             </div>
             <div class="form-group mb-2">
                 <label for="txtLuggage">Số lượng hành lý</label>
-                <input type="text" class="form-control" name="Luggage" id="txtLuggage" placeholder="">
+                <input type="text" class="form-control" name="Luggage" id="txtLuggage" placeholder="" required>
             </div>
             <div class="form-group mb-2">
                 <label for="txtNumofSeat">Số lượng ghế</label>
-                <input type="text" class="form-control" name="NumofSeat" id="txtNumofSeat" placeholder="">
+                <input type="text" class="form-control" name="NumofSeat" id="txtNumofSeat" placeholder="" required>
             </div>
             <div class="form-group">
                 <label for="txtPrice">Giá vé</label>
-                <input type="text" class="form-control" name="Price" id="txtPrice" placeholder="">
+                <input type="text" class="form-control" name="Price" id="txtPrice" placeholder="" required>
             </div>
         </div>
         <div class="col d-flex flex-column">

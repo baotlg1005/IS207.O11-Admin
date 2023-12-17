@@ -11,22 +11,22 @@
             <div class="form-group mb-2">
                 <label for="txtName">Tên taxi</label>
                 <input type="text" class="form-control" name="Name" id="txtName" placeholder=""
-                    value="{{ $taxi->Name }}">
+                    value="{{ $taxi->Name }}" required>
             </div>
             <div class="form-group mb-2">
                 <label for="txtLuggage">Số lượng hành lý</label>
                 <input type="text" class="form-control" name="Luggage" id="txtLuggage" placeholder=""
-                    value="{{ $taxi->Luggage }}">
+                    value="{{ $taxi->Luggage }}" required>
             </div>
             <div class="form-group mb-2">
                 <label for="txtNumofSeat">Số lượng ghế</label>
                 <input type="text" class="form-control" name="NumofSeat" id="txtNumofSeat" placeholder=""
-                    value="{{ $taxi->NumofSeat }}">
+                    value="{{ $taxi->NumofSeat }}" required>
             </div>
             <div class="form-group">
                 <label for="txtPrice">Giá vé</label>
                 <input type="text" class="form-control" name="Price" id="txtPrice" placeholder=""
-                    value="{{ $taxi->Price }}">
+                    value="{{ $taxi->Price }}" required>
             </div>
         </div>
         <div class="col d-flex flex-column">
