@@ -18,7 +18,6 @@ class TaxiAreaDetail extends Model
      */
 
     protected $fillable = [
-        'ai_id',
         'Pickpoint_id',
         'Taxi_id',
         'created_at',
