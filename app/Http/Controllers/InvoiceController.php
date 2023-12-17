@@ -18,7 +18,7 @@ class InvoiceController extends Controller
         $flight_invoices = FlightInvoice::join('invoice', 'invoice.Id', '=', 'flight_invoice.Invoice_id')
             ->get()
             ->paginate(5);
-
+        // dd($flight_invoices);
         $bus_invoices = BusInvoice::join('invoice', 'invoice.Id', '=', 'bus_invoice.Invoice_id')
             ->get()
             ->paginate(5);
@@ -33,6 +33,44 @@ class InvoiceController extends Controller
             ->paginate(5);
 
         return view('invoice.index', [
+            'form_date' => null,
+            'to_date' => null,
+            'flight_invoices' => $flight_invoices,
+            'bus_invoices' => $bus_invoices,
+            'room_invoices' => $room_invoices,
+            'taxi_invoices' => $taxi_invoices,
+        ]);
+    }
+
+    public function filter(Request $request){
+        $from_date = $request->input('from_date');
+        $to_date = $request->input('to_date');
+        $to_1_date = date('Y-m-d', strtotime($to_date . ' +1 day'));
+        
+        $flight_invoices = FlightInvoice::join('invoice', 'invoice.Id', '=', 'flight_invoice.Invoice_id')
+            ->whereBetween('invoice.created_at', [$from_date, $to_1_date])
+            ->get()
+            ->paginate(5);
+        // dd($flight_invoices);
+        $bus_invoices = BusInvoice::join('invoice', 'invoice.Id', '=', 'bus_invoice.Invoice_id')
+            ->whereBetween('invoice.created_at', [$from_date, $to_1_date])
+            ->get()
+            ->paginate(5);
+        $room_invoices = RoomInvoice::join('invoice', 'invoice.Id', '=', 'room_invoice.Invoice_id')
+            ->join('room', 'room.Id', '=', 'room_invoice.Room_id')
+            ->join('hotel', 'hotel.Id', '=', 'room.Hotel_id')
+            ->whereBetween('invoice.created_at', [$from_date, $to_1_date])
+            ->get()
+            ->paginate(5);
+        
+        $taxi_invoices = TaxiInvoice::join('invoice', 'invoice.Id', '=', 'taxi_invoice.Invoice_id')
+            ->whereBetween('invoice.created_at', [$from_date, $to_1_date])
+            ->get()
+            ->paginate(5);
+
+        return view('invoice.index', [
+            'from_date' => $from_date,
+            'to_date' => $to_date,
             'flight_invoices' => $flight_invoices,
             'bus_invoices' => $bus_invoices,
             'room_invoices' => $room_invoices,

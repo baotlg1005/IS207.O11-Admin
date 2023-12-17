@@ -36,3 +36,4 @@ Route::delete('/flight/{id}', [App\Http\Controllers\FlightController::class, 'de
 
 //INVOICE
 Route::get('/invoice', [App\Http\Controllers\InvoiceController::class, 'index'])->name('invoice');
+Route::get('/invoice/filter', [App\Http\Controllers\InvoiceController::class, 'filter'])->name('invoice.filter');

@@ -3,14 +3,31 @@
 @section('content')
 <div class="container">
     <div>
+        <form action="{{ route('invoice.filter') }}" method="GET" role="filter">
+            <div class="row justify-content-end">
+                <div class="col-md-4 d-flex">
+                    <div>From Date: </div>
+                    <input type="date" class="form-control" name="from_date" placeholder="From Date" value="{{$from_date}}">
+                </div>
+                <div class="col-md-4 d-flex">
+                    <div>To Date: </div>
+                    <input type="date" class="form-control" name="to_date" placeholder="To Date" value="{{$to_date}}">
+                </div>
+                <div class="col-md-1">
+                    <button type="submit" class="btn btn-success">Filter</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div>
         <h1>Hoá đơn vé máy bay</h1>
     </div>
     <table class="table table-striped">
         <caption>
             @if ($flight_invoices->total() > 0)
-                {{ $flight_invoices->total() }} flight(s) found.
+                {{ $flight_invoices->total() }} invoice(s) found.
             @else
-                No flight found
+                No invoice found
             @endif
         </caption>
         <thead>
@@ -19,6 +36,7 @@
                 <th>Mã chuyến bay</th>
                 <th>Mã người đặt</th>
                 <th>Tổng tiền</th>
+                <th>Ngày tạo</th>
                 <th>Trạng thái</th>
             </tr>
         </thead>
@@ -26,9 +44,10 @@
             @foreach($flight_invoices as $invoice)
             <tr>
                 <td>{{ $invoice->Id }}</td>
-                <td>{{ $invoice->Flight_Id }}</td>
+                <td>{{ $invoice->Flight_id }}</td>
                 <td>{{ $invoice->User_id }}</td>
                 <td>{{ $invoice->Total }}</td>
+                <td>{{ $invoice->created_at }}</td>
                 <td> Chưa thanh toán </td>
             </tr>
             @endforeach
@@ -42,9 +61,9 @@
         <table class="table table-striped">
             <caption>
                 @if ($bus_invoices->total() > 0)
-                    {{ $bus_invoices->total() }} flight(s) found.
+                    {{ $bus_invoices->total() }} invoice(s) found.
                 @else
-                    No flight found
+                    No invoice found
                 @endif
             </caption>
             <thead>
@@ -53,6 +72,7 @@
                     <th>Mã xe khách</th>
                     <th>Mã người đặt</th>
                     <th>Tổng tiền</th>
+                    <th>Ngày tạo</th>
                     <th>Trạng thái</th>
                 </tr>
             </thead>
@@ -60,9 +80,10 @@
                 @foreach($bus_invoices as $invoice)
                 <tr>
                     <td>{{ $invoice->Id }}</td>
-                    <td>{{ $invoice->Bus_Id }}</td>
+                    <td>{{ $invoice->Bus_id }}</td>
                     <td>{{ $invoice->User_id }}</td>
                     <td>{{ $invoice->Total }}</td>
+                    <td>{{ $invoice->created_at }}</td>
                     <td> Chưa thanh toán </td>
                 </tr>
                 @endforeach
@@ -77,9 +98,9 @@
         <table class="table table-striped">
             <caption>
                 @if ($taxi_invoices->total() > 0)
-                    {{ $taxi_invoices->total() }} flight(s) found.
+                    {{ $taxi_invoices->total() }} invoice(s) found.
                 @else
-                    No flight found
+                    No invoice found
                 @endif
             </caption>
             <thead>
@@ -88,6 +109,7 @@
                     <th>Mã xe khách</th>
                     <th>Mã người đặt</th>
                     <th>Tổng tiền</th>
+                    <th>Ngày tạo</th>
                     <th>Trạng thái</th>
                 </tr>
             </thead>
@@ -95,9 +117,10 @@
                 @foreach($taxi_invoices as $invoice)
                 <tr>
                     <td>{{ $invoice->Id }}</td>
-                    <td>{{ $invoice->Taxi_Id }}</td>
+                    <td>{{ $invoice->Taxi_id }}</td>
                     <td>{{ $invoice->User_id }}</td>
                     <td>{{ $invoice->Total }}</td>
+                    <td>{{ $invoice->created_at }}</td>
                     <td> Chưa thanh toán </td>
                 </tr>
                 @endforeach
@@ -112,9 +135,9 @@
         <table class="table table-striped">
             <caption>
                 @if ($room_invoices->total() > 0)
-                    {{ $room_invoices->total() }} flight(s) found.
+                    {{ $room_invoices->total() }} invoice(s) found.
                 @else
-                    No flight found
+                    No invoice found
                 @endif
             </caption>
             <thead>
@@ -123,6 +146,7 @@
                     <th>Mã phòng</th>
                     <th>Mã người đặt</th>
                     <th>Tổng tiền</th>
+                    <th>Ngày tạo</th>
                     <th>Trạng thái</th>
                 </tr>
             </thead>
@@ -130,9 +154,10 @@
                 @foreach($room_invoices as $invoice)
                 <tr>
                     <td>{{ $invoice->Id }}</td>
-                    <td>{{ $invoice->Room_Id }}</td>
+                    <td>{{ $invoice->Room_id }}</td>
                     <td>{{ $invoice->User_id }}</td>
                     <td>{{ $invoice->Total }}</td>
+                    <td>{{ $invoice->created_at }}</td>
                     <td> Chưa thanh toán </td>
                 </tr>
                 @endforeach

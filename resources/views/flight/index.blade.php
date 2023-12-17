@@ -81,7 +81,7 @@
         @endforeach
     </table>
     <div class="d-flex justify-content-center">
-        {!! $flights->links() !!}
+        {!! $flights->appends(request()->input())->links() !!}
     </div>
 </div>
 </div>
