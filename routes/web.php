@@ -99,5 +99,18 @@ Route::get('/room/{id}/edit', [App\Http\Controllers\RoomController::class, 'edit
 Route::put('/room/{id}', [App\Http\Controllers\RoomController::class, 'update'])->name('room.update');
 
 Route::delete('/room/{id}', [App\Http\Controllers\RoomController::class, 'destroy'])->name('room.destroy');
+
+//CUSTOMER
+Route::get('/customer/create', [App\Http\Controllers\CustomerController::class, 'create'])->name('customer.create');
+Route::post('/customer', [App\Http\Controllers\CustomerController::class, 'store'])->name('customer.store');
+
+Route::get('/customer', [App\Http\Controllers\CustomerController::class, 'index'])->name('customer.index');
+Route::get('/customer/search', [App\Http\Controllers\CustomerController::class, 'search'])->name('customer.search');
+Route::get('/customer/{id}', [App\Http\Controllers\CustomerController::class, 'show'])->name('customer.show');
+
+Route::get('/customer/{id}/edit', [App\Http\Controllers\CustomerController::class, 'edit'])->name('customer.edit');
+Route::put('/customer/{id}', [App\Http\Controllers\CustomerController::class, 'update'])->name('customer.update');
+
+Route::delete('/customer/{id}', [App\Http\Controllers\CustomerController::class, 'destroy'])->name('customer.destroy');
 //INVOICE
 Route::get('/invoice', [App\Http\Controllers\InvoiceController::class, 'index'])->name('invoice');
