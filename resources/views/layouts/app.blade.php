@@ -70,11 +70,17 @@
                                     <a class="dropdown-item" href="{{ route('taxi.index') }}">
                                         Quản lý xe dịch vụ
                                     </a>
+                                    <a class="dropdown-item" href="{{ route('taxiarea.index') }}">
+                                        Quản lý khu vực xe dịch vụ
+                                    </a>
                                     <a class="dropdown-item" href="{{ route('hotel.index') }}">
                                         Quản lý khách sạn
                                     </a>
                                     <a class="dropdown-item" href="{{ route('invoice.index') }}">
                                         Quản lý hoá đơn
+                                    </a>
+                                    <a class="dropdown-item" href="{{ route('customer.index') }}">
+                                        Quản lý người dùng
                                     </a>
                                 </div>
                                 
