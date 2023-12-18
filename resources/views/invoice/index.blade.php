@@ -38,6 +38,7 @@
                 <th>Tổng tiền</th>
                 <th>Ngày tạo</th>
                 <th>Trạng thái</th>
+                <th>Action</th>
             </tr>
         </thead>
         <tbody>
@@ -48,7 +49,16 @@
                 <td>{{ $invoice->User_id }}</td>
                 <td>{{ $invoice->Total }}</td>
                 <td>{{ $invoice->created_at }}</td>
-                <td> Chưa thanh toán </td>
+                <td>
+                    @if ($invoice->pay_status == 0)
+                        Chưa thanh toán
+                    @else
+                        Đã thanh toán
+                    @endif
+                </td>
+                <td>
+                    <a href="{{ route('invoice.changeStatus', $invoice->Id) }}" class="btn btn-primary">Chuyển trạng thái</a>
+                </td>
             </tr>
             @endforeach
         </tbody>
@@ -74,6 +84,7 @@
                     <th>Tổng tiền</th>
                     <th>Ngày tạo</th>
                     <th>Trạng thái</th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -84,7 +95,17 @@
                     <td>{{ $invoice->User_id }}</td>
                     <td>{{ $invoice->Total }}</td>
                     <td>{{ $invoice->created_at }}</td>
-                    <td> Chưa thanh toán </td>
+                    <td>
+                        @if ($invoice->pay_status == 0)
+                            Chưa thanh toán
+                        @else
+                            Đã thanh toán
+                        @endif
+                    </td>
+                    <td>
+                        <a href="{{ route('invoice.changeStatus', $invoice->Id) }}" class="btn btn-primary">Chuyển trạng thái</a>
+                    </td>
+
                 </tr>
                 @endforeach
             </tbody>
@@ -111,6 +132,7 @@
                     <th>Tổng tiền</th>
                     <th>Ngày tạo</th>
                     <th>Trạng thái</th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -121,7 +143,16 @@
                     <td>{{ $invoice->User_id }}</td>
                     <td>{{ $invoice->Total }}</td>
                     <td>{{ $invoice->created_at }}</td>
-                    <td> Chưa thanh toán </td>
+                                    <td>
+                    @if ($invoice->pay_status == 0)
+                        Chưa thanh toán
+                    @else
+                        Đã thanh toán
+                    @endif
+                </td>
+                <td>
+                    <a href="{{ route('invoice.changeStatus', $invoice->Id) }}" class="btn btn-primary">Chuyển trạng thái</a>
+                </td>
                 </tr>
                 @endforeach
             </tbody>
@@ -148,6 +179,7 @@
                     <th>Tổng tiền</th>
                     <th>Ngày tạo</th>
                     <th>Trạng thái</th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -158,7 +190,16 @@
                     <td>{{ $invoice->User_id }}</td>
                     <td>{{ $invoice->Total }}</td>
                     <td>{{ $invoice->created_at }}</td>
-                    <td> Chưa thanh toán </td>
+                                    <td>
+                    @if ($invoice->pay_status == 0)
+                        Chưa thanh toán
+                    @else
+                        Đã thanh toán
+                    @endif
+                </td>
+                <td>
+                    <a href="{{ route('invoice.changeStatus', $invoice->Id) }}" class="btn btn-primary">Chuyển trạng thái</a>
+                </td>
                 </tr>
                 @endforeach
             </tbody>

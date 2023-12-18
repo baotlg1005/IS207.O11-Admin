@@ -7,6 +7,7 @@ use App\Models\FlightInvoice;
 use App\Models\TaxiInvoice;
 use App\Models\BusInvoice;
 use App\Models\RoomInvoice;
+use App\Models\Invoice;
 
 class InvoiceController extends Controller
 {
@@ -77,7 +78,14 @@ class InvoiceController extends Controller
             'taxi_invoices' => $taxi_invoices,
         ]);
     }
-
+    public function changeStatus(string $id){
+        $invoice = Invoice::find($id);
+        $new_status = $invoice->pay_status == 0 ? 1 : 0;
+        Invoice::where('Id', $id)
+            ->update(['pay_status' => $new_status]);
+            
+        return redirect()->route('invoice.index');
+    }
     /**
      * Show the form for creating a new resource.
      */

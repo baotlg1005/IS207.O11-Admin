@@ -117,7 +117,7 @@ Route::group(['middleware' => ['auth']], function () {
     //INVOICE
     Route::get('/invoice', [App\Http\Controllers\InvoiceController::class, 'index'])->name('invoice.index');
     Route::get('/invoice/filter', [App\Http\Controllers\InvoiceController::class, 'filter'])->name('invoice.filter');
-
+    Route::get('/invoice/{id}', [App\Http\Controllers\InvoiceController::class, 'changeStatus'])->name('invoice.changeStatus');
 });
 
 

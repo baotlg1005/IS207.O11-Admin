@@ -19,5 +19,6 @@ class Invoice extends Model
         'Id',
         'UserId',
         'Total',
+        'pay_status',
     ];
 }
