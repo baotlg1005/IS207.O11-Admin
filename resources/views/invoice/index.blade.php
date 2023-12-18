@@ -5,12 +5,12 @@
     <div>
         <form action="{{ route('invoice.filter') }}" method="GET" role="filter">
             <div class="row justify-content-end">
-                <div class="col-md-4 d-flex">
-                    <div>From Date: </div>
+                <div class="col-md-4 d-flex align-items-center gap-2">
+                    <div>From: </div>
                     <input type="date" class="form-control" name="from_date" placeholder="From Date" value="{{$from_date}}">
                 </div>
-                <div class="col-md-4 d-flex">
-                    <div>To Date: </div>
+                <div class="col-md-4 d-flex align-items-center gap-2">
+                    <div>To: </div>
                     <input type="date" class="form-control" name="to_date" placeholder="To Date" value="{{$to_date}}">
                 </div>
                 <div class="col-md-1">
