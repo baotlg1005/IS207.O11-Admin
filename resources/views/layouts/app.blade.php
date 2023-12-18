@@ -64,23 +64,15 @@
                                     <a class="dropdown-item" href="{{ route('flight.index') }}">
                                         Quản lý chuyến bay
                                     </a>
-                                </div>
-                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('bus.index') }}">
                                         Quản lý xe khách
                                     </a>
-                                </div>
-                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('taxi.index') }}">
                                         Quản lý xe dịch vụ
                                     </a>
-                                </div>
-                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('hotel.index') }}">
                                         Quản lý khách sạn
                                     </a>
-                                </div>
-                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('invoice.index') }}">
                                         Quản lý hoá đơn
                                     </a>

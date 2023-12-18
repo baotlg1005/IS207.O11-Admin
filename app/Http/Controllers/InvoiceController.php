@@ -33,7 +33,7 @@ class InvoiceController extends Controller
             ->paginate(5);
 
         return view('invoice.index', [
-            'form_date' => null,
+            'from_date' => null,
             'to_date' => null,
             'flight_invoices' => $flight_invoices,
             'bus_invoices' => $bus_invoices,
